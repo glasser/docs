@@ -14,7 +14,9 @@ To define a custom scalar you simply add it to the schema with the following not
 scalar MyCustomScalar
 ```
 
-Consequently, you need to define the behaviour of the scalar: how it will be serialized when the value is sent to the client, and how the value is resolved when received from the client. For this purpose, each scalar needs to define three methods: `serialize`, `parseValue` and `parseLiteral`. In `graphql-js`, these functions are defined with the `__` prefix: `__serialize`, `__parseValue` and `__parseLiteral`. (Note that [Apollo Client does not currently support custom scalars](https://github.com/apollostack/apollo-client/issues/585), so there's no way to automatically apply the same transformations on the client side.)
+Consequently, you need to define the behaviour of the scalar: how it will be serialized when the value is sent to the client, and how the value is resolved when received from the client. For this purpose, each scalar needs to define three methods. In schemas defined with `graphql-tools` they are named `__serialize`, `__parseValue` and `__parseLiteral`. (If you're using `graphql-js` directly, the methods do not have the `__` prefix.)
+
+Note that [Apollo Client does not currently support custom scalars](https://github.com/apollostack/apollo-client/issues/585), so there's no way to automatically apply the same transformations on the client side.
 
 Let's look at a couple of examples to demonstrate the potential of custom scalars.
 
